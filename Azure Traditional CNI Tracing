@@ -1,0 +1,198 @@
+root@aks-agentpool-32132268-vmss000004:/# wget https://raw.githubusercontent.com/tdihp/myakshack/main/tracing/cnisnoop.py
+root@aks-agentpool-32132268-vmss000004:/# chmod 755 cnisnoop.py
+root@aks-agentpool-32132268-vmss000004:/# python3 cnisnoop.py
+HH:MM:SS.0000NS     PID/TID     CNI_PID             COMM  EVENT
+================================================================================
+10:10:12.666709    1469/1908306 2922250       containerd   EXEC
+exe: /opt/cni/bin/azure-vnet /opt/cni/bin/azure-vnet
+envs:
+    LANG=C.UTF-8
+    LD_LIBRARY_PATH=/opt/containerd/lib:
+    CNI_CONTAINERID=f8084beb431c3115c69dad429e21942c8ca8ea1662f5ceaa0e4d922afb523ca9
+    CNI_ARGS=K8S_POD_INFRA_CONTAINER_ID=f8084beb431c3115c69dad429e21942c8ca8ea1662f5ceaa0e4d922afb523ca9;K8S_POD_UID=a0ee9340-e9bb-46c6-98d2-2cd50c9c82e9;IgnoreUnknown=1;K8S_POD_NAMESPACE=default;K8S_POD_NAME=nginx2
+    CNI_NETNS=/var/run/netns/cni-acb19811-5cf3-f401-c10e-6a0a8d152934
+    CNI_IFNAME=eth0
+    PATH=/opt/containerd/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/nri/bin
+    SGX_AESM_ADDR=1
+    INVOCATION_ID=6f30422d5b9a4ed8b8d4895b60749a41
+    JOURNAL_STREAM=8:20295
+    SYSTEMD_EXEC_PID=1469
+    CNI_COMMAND=ADD
+    CNI_PATH=/opt/cni/bin
+================================================================================
+10:10:12.667415    1469/4119390 2922250       containerd  STDIN
+{"cniVersion":"0.3.0","ipam":{"type":"azure-vnet-ipam"},"ipsToRouteViaHost":["169.254.20.10"],"mode":"transparent","name":"azure","type":"azure-vnet"}
+================================================================================
+10:10:12.667826    1469/4119390 2922251       containerd   EXEC
+exe: /opt/cni/bin/loopback /opt/cni/bin/loopback
+envs:
+    CNI_COMMAND=ADD
+    CNI_IFNAME=lo
+    CNI_PATH=/opt/cni/bin
+    LANG=C.UTF-8
+    PATH=/opt/containerd/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/nri/bin
+    INVOCATION_ID=6f30422d5b9a4ed8b8d4895b60749a41
+    JOURNAL_STREAM=8:20295
+    CNI_NETNS=/var/run/netns/cni-acb19811-5cf3-f401-c10e-6a0a8d152934
+    CNI_ARGS=K8S_POD_NAMESPACE=default;K8S_POD_NAME=nginx2;K8S_POD_INFRA_CONTAINER_ID=f8084beb431c3115c69dad429e21942c8ca8ea1662f5ceaa0e4d922afb523ca9;K8S_POD_UID=a0ee9340-e9bb-46c6-98d2-2cd50c9c82e9;IgnoreUnknown=1
+    SGX_AESM_ADDR=1
+    SYSTEMD_EXEC_PID=1469
+    LD_LIBRARY_PATH=/opt/containerd/lib:
+    CNI_CONTAINERID=f8084beb431c3115c69dad429e21942c8ca8ea1662f5ceaa0e4d922afb523ca9
+================================================================================
+10:10:12.673726    1469/1852391 2922251       containerd  STDIN
+{"cniVersion":"0.3.1","name":"cni-loopback","type":"loopback"}
+================================================================================
+10:10:12.675452 2922251/2922251 2922251         loopback STDOUT
+{
+    "cniVersion": "0.3.1",
+    "interfaces": [
+        {
+            "name": "lo",
+            "mac": "00:00:00:00:00:00",
+            "sandbox": "/var/run/netns/cni-acb19811-5cf3-f401-c10e-6a0a8d152934"
+        }
+    ],
+    "ips": [
+        {
+            "interface": 0,
+            "address": "127.0.0.1/8"
+        },
+        {
+            "interface": 0,
+            "address": "::1/128"
+        }
+    ],
+    "dns": {}
+}
+================================================================================
+10:10:12.676243 2922251/2922251 2922251         loopback   EXIT
+exit code: 0
+================================================================================
+10:10:12.697066 2922250/2922254 2922266       azure-vnet   EXEC
+exe: /opt/cni/bin/azure-vnet-ipam /opt/cni/bin/azure-vnet-ipam
+envs:
+    SYSTEMD_EXEC_PID=1469
+    CNI_PATH=/opt/cni/bin
+    LD_LIBRARY_PATH=/opt/containerd/lib:
+    CNI_ARGS=K8S_POD_INFRA_CONTAINER_ID=f8084beb431c3115c69dad429e21942c8ca8ea1662f5ceaa0e4d922afb523ca9;K8S_POD_UID=a0ee9340-e9bb-46c6-98d2-2cd50c9c82e9;IgnoreUnknown=1;K8S_POD_NAMESPACE=default;K8S_POD_NAME=nginx2
+    CNI_IFNAME=eth0
+    JOURNAL_STREAM=8:20295
+    SGX_AESM_ADDR=1
+    INVOCATION_ID=6f30422d5b9a4ed8b8d4895b60749a41
+    CNI_COMMAND=ADD
+    LANG=C.UTF-8
+    CNI_CONTAINERID=f8084beb431c3115c69dad429e21942c8ca8ea1662f5ceaa0e4d922afb523ca9
+    CNI_NETNS=/var/run/netns/cni-acb19811-5cf3-f401-c10e-6a0a8d152934
+    PATH=/opt/containerd/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/nri/bin
+================================================================================
+10:10:12.699190 2922250/2922258 2922266       azure-vnet  STDIN
+{"cniVersion":"0.3.0","name":"azure","type":"azure-vnet","mode":"transparent","ipsToRouteViaHost":["169.254.20.10"],"ipam":{"type":"azure-vnet-ipam","subnet":"10.224.0.0/16"},"dns":{},"runtimeConfig":{"dns":{}},"windowsSettings":{}}
+================================================================================
+10:10:12.724782 2922266/2922268 2922266  azure-vnet-ipam STDOUT
+{
+    "cniVersion": "0.3.0",
+    "ips": [
+        {
+            "version": "4",
+            "address": "10.224.0.133/16",
+            "gateway": "10.224.0.1"
+        }
+    ],
+    "routes": [
+        {
+            "dst": "0.0.0.0/0",
+            "gw": "10.224.0.1"
+        }
+    ],
+    "dns": {
+        "nameservers": [
+            "168.63.129.16"
+        ]
+    }
+}
+================================================================================
+10:10:12.726130 2922266/2922266 2922266  azure-vnet-ipam   EXIT
+exit code: 0
+================================================================================
+10:10:12.795050 2922250/2922258 2922250       azure-vnet STDOUT
+{
+    "cniVersion": "0.3.0",
+    "interfaces": [
+        {
+            "name": "eth0"
+        }
+    ],
+    "ips": [
+        {
+            "version": "4",
+            "address": "10.224.0.133/16",
+            "gateway": "10.224.0.1"
+        }
+    ],
+    "routes": [
+        {
+            "dst": "0.0.0.0/0",
+            "gw": "10.224.0.1"
+        }
+    ],
+    "dns": {
+        "nameservers": [
+            "168.63.129.16"
+        ]
+    }
+}
+================================================================================
+10:10:12.795252 2922250/2922250 2922250       azure-vnet   EXIT
+exit code: 0
+================================================================================
+10:10:12.797139    1469/1859960 2922290       containerd   EXEC
+exe: /opt/cni/bin/portmap /opt/cni/bin/portmap
+envs:
+    PATH=/opt/containerd/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/opt/nri/bin
+    SGX_AESM_ADDR=1
+    INVOCATION_ID=6f30422d5b9a4ed8b8d4895b60749a41
+    LD_LIBRARY_PATH=/opt/containerd/lib:
+    CNI_ARGS=K8S_POD_INFRA_CONTAINER_ID=f8084beb431c3115c69dad429e21942c8ca8ea1662f5ceaa0e4d922afb523ca9;K8S_POD_UID=a0ee9340-e9bb-46c6-98d2-2cd50c9c82e9;IgnoreUnknown=1;K8S_POD_NAMESPACE=default;K8S_POD_NAME=nginx2
+    CNI_PATH=/opt/cni/bin
+    LANG=C.UTF-8
+    JOURNAL_STREAM=8:20295
+    SYSTEMD_EXEC_PID=1469
+    CNI_COMMAND=ADD
+    CNI_CONTAINERID=f8084beb431c3115c69dad429e21942c8ca8ea1662f5ceaa0e4d922afb523ca9
+    CNI_NETNS=/var/run/netns/cni-acb19811-5cf3-f401-c10e-6a0a8d152934
+    CNI_IFNAME=eth0
+================================================================================
+10:10:12.798761    1469/1908306 2922290       containerd  STDIN
+{"capabilities":{"portMappings":true},"cniVersion":"0.3.0","name":"azure","prevResult":{"cniVersion":"0.3.0","interfaces":[{"name":"eth0"}],"ips":[{"version":"4","address":"10.224.0.133/16","gateway":"10.224.0.1"}],"routes":[{"dst":"0.0.0.0/0","gw":"10.224.0.1"}],"dns":{"nameservers":["168.63.129.16"]}},"snat":true,"type":"portmap"}
+================================================================================
+10:10:12.799693 2922290/2922290 2922290          portmap STDOUT
+{
+    "cniVersion": "0.3.0",
+    "interfaces": [
+        {
+            "name": "eth0"
+        }
+    ],
+    "ips": [
+        {
+            "version": "4",
+            "address": "10.224.0.133/16",
+            "gateway": "10.224.0.1"
+        }
+    ],
+    "routes": [
+        {
+            "dst": "0.0.0.0/0",
+            "gw": "10.224.0.1"
+        }
+    ],
+    "dns": {
+        "nameservers": [
+            "168.63.129.16"
+        ]
+    }
+}
+================================================================================
+10:10:12.800050 2922290/2922290 2922290          portmap   EXIT
+exit code: 0
